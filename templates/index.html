@@ -1,28 +1,77 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
 
+<body>
+    <div id="background">
+        <div id="center">
+            <button onClick=randomColor() class="button">PICK A RANDOM COLOUR 🎨</button>
+            <p id="rgba">rgba(240, 248, 255, 1)</p>
+            <p>Hello Colour Seeker! Welcome to the site of color seeking 😃</p>
+            <p>Click on the button above to randomize background colour</p>
+            <p>The RGBA values of the colours will be displayed once the button is clicked</p>
+            <p>You are the {{ count }} colour seeker🔍 🌈 to use this site.</p>
+        </div>
+     </div>
+</body>
 <style>
+      #background {
+            background-color: black;
+            width: 100%;
+            height: 100%;
+        }
+        #rgba{
+            text-decoration: none;
+            color:black 
+
+        }
+        .button {
+            background-color: black;
+            border: 2px solid white;
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+        }
+    
+    
+    
+    
     * {
         font-family: "Rubik", "sans-serif";
     }
 
     div {
-        text-align: right;
+        text-align: center;
         margin-top: 50px;
     }
 
-    h1 {
+    p {
         color: white;
         font-size: 15pt;
     }
 
     p {
-        
+        color:white;
         font-size: 11pt;
     }
 </style>
 
-<div>
-    <h1>Click on the button to the left to randomize background color</h1><br>
-    <p>You the {{ count }} colour seeker to use this site.</p>
-</div>
+<script>
+    function randomColor(){
+        let colorPalette = [];
+
+        for (let i =0; i < 3; i++){
+            colorVariant = Math.floor((Math.random() * 255 ) + 0);
+            colorPalette[i] = colorVariant;
+        }
+
+        colorPalette[3] = (Math.random() * 1).toFixed(2);
+
+        let rgbaNUM = `rgba(${colorPalette[0]}, ${colorPalette[1]}, ${colorPalette[2]}, ${colorPalette[3]})`;
+            console.log(rgbaNUM);
+            document.getElementById("background").style.backgroundColor = rgbaNUM;
+            document.getElementById("rgba").innerHTML = `${rgbaNUM}`;
+    }
+</script>
